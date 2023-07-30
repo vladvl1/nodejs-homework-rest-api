@@ -57,11 +57,11 @@ const login = async(req, res)=> {
 }
 
 const getCurrent = (req, res)=> {
-    const {name, email} = req.user;
+    const {subscription, email} = req.user;
 
     res.json({
-        name,
-        email,
+        email:email,
+        subscription:subscription
     })
 }
 
