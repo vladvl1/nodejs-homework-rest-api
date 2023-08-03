@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
+import gravatar from 'gravatar';
 import "dotenv/config";
 
 import User from "../models/user.js";
@@ -24,6 +25,7 @@ const register = async(req, res)=> {
         user:{
             email: newUser.email,
             subscription: "starter",
+            avatarURL:gravatar.url(newUser.email)
         }
         })
 }

@@ -11,6 +11,7 @@ const contactAddSchema = Joi.object({
       "any.required":`missing required phone field`,
     }),
     favorite:Joi.boolean(),
+    avatarURL:Joi.string(),
   })
 
   const contactUpdateFavoriteSchema = Joi.object({
