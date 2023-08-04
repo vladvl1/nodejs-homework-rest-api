@@ -1,7 +1,7 @@
 import  { HttpError }  from '../helpers/index.js';
 import { ctrlWrapper } from '../decorators/index.js';
 import Contact from "../models/contact.js";
-import fs from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 
 
@@ -27,7 +27,7 @@ const add = async (req, res) => {
     const {_id:owner} = req.user;
     const {path: oldPath, filename} = req.file;
     const newPath = path.join(avatarPath, filename);
-    await fs.rename(oldPath, newPath);
+    fs.rename(oldPath, newPath);
     const avatar = path.join("avatars", filename);
     const result = await Contact.create({...req.body, avatar, owner});
     res.status(201).json(result);

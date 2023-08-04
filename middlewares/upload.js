@@ -14,9 +14,14 @@ const storage = multer.diskStorage({
     }
 });
 
-const limits = Jimp.read(destination).then((image)=>{
+const limits = Jimp.read("/Users/admin/Desktop/GOIT/nodejs-homework-rest-api/public/avatars/IMG_4720.jpeg").then((image)=>{
     return image.resize(250,250);
+    
+}).catch((err)=>{
+    console.error(err);
 })
+
+
 
 const upload = multer({
     storage,
