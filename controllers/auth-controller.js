@@ -25,7 +25,7 @@ const register = async(req, res)=> {
         user:{
             email: newUser.email,
             subscription: "starter",
-            avatarURL:gravatar.url(newUser.email)
+            avatarURL:gravatar.profile_url(newUser.email)
         }
         })
 }
