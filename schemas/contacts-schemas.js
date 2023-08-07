@@ -19,11 +19,6 @@ const contactAddSchema = Joi.object({
       "any.required":`missing required favorite field`,
     })
 })
-const contactUpdateAvatarSchema = Joi.object({
-  avatarURL: Joi.string().required().messages({
-    "any.required":`missing required avatarURL field`,
-  })
-})
   
   export default {
     contactAddSchema,
