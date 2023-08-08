@@ -23,5 +23,4 @@ const contactAddSchema = Joi.object({
   export default {
     contactAddSchema,
     contactUpdateFavoriteSchema,
-    contactUpdateAvatarSchema,
   }
