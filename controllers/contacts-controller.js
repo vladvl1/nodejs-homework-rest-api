@@ -1,7 +1,6 @@
 import  { HttpError }  from '../helpers/index.js';
 import { ctrlWrapper } from '../decorators/index.js';
 import Contact from "../models/contact.js";
-import fs from 'fs';
 import path from 'path';
 
 
@@ -25,11 +24,7 @@ const avatarPath = path.resolve("public","avatars");
 
 const add = async (req, res) => {
     const {_id:owner} = req.user;
-    const {path: oldPath, filename} = req.file;
-    const newPath = path.join(avatarPath, filename);
-    await fs.rename(oldPath, newPath);
-    const avatar = path.join("avatars", filename);
-    const result = await Contact.create({...req.body, avatar, owner});
+    const result = await Contact.create({...req.body,owner});
     res.status(201).json(result);
 }
 
@@ -54,17 +49,7 @@ const updateFavorite = async(req,res) =>{
     res.json(result);
 }
 
-const updateAvatar = async(req,res)=>{
-    const {avatar} = req.params;
-    const result = await Contact.findByIdAndUpdate(avatar,req.body,{new:true});
-    if(Object.keys(req.body).length === 0 ){
-        throw HttpError(400, "missing field avatarURL");
-    }
-    if(!result){
-        throw HttpError(404,"Not found");
-    }
-    res.json(result);
-}
+
 
 const deleteById = async (req, res, next) => {
     const { id } = req.params;
@@ -84,5 +69,5 @@ export default {
     updateById: ctrlWrapper(updateById),
     updateFavorite:ctrlWrapper(updateFavorite),
     deleteById: ctrlWrapper(deleteById),
-    updateAvatar:ctrlWrapper(updateAvatar),
+    
 }
