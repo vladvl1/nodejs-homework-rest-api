@@ -1,6 +1,6 @@
 import multer from "multer";
 import path from "path";
-import Jimp from "jimp";
+
 
 const destination = path.resolve("tmp");
 
@@ -14,12 +14,9 @@ const storage = multer.diskStorage({
     }
 });
 
-const limits = Jimp.read("./public/avatars/IMG_4720.jpeg").then((image)=>{
-    return image.resize(250,250);
-    
-}).catch((err)=>{
-    console.error(err);
-})
+const limits = {
+    fileSize: 1024 * 1024 * 5,
+}
 
 
 

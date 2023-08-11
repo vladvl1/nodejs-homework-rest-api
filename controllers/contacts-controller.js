@@ -1,7 +1,6 @@
 import  { HttpError }  from '../helpers/index.js';
 import { ctrlWrapper } from '../decorators/index.js';
 import Contact from "../models/contact.js";
-import path from 'path';
 
 
 const getAll = async (req, res) => {
@@ -20,7 +19,7 @@ const getById = async (req, res) => {
     }
     res.json(result);
 }
-const avatarPath = path.resolve("public","avatars");
+
 
 const add = async (req, res) => {
     const {_id:owner} = req.user;
