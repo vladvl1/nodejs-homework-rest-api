@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 import gravatar from 'gravatar';
 import "dotenv/config";
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 
 import User from "../models/user.js";
@@ -98,7 +98,7 @@ const updateAvatar = async(req,res)=>{
         throw HttpError(404,`Invalid id = ${_id}`);
     }
     res.json({
-        avatarURL:avatarURL,
+        avatarURL:url,
     });
 }
 
