@@ -97,7 +97,9 @@ const updateAvatar = async(req,res)=>{
     if(!result){
         throw HttpError(404,`Invalid id = ${_id}`);
     }
-    res.json(result);
+    res.json({
+        avatarURL:avatarURL,
+    });
 }
 
 export default {
