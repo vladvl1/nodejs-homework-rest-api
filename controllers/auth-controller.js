@@ -76,7 +76,7 @@ const logout = async(req, res) => {
     
     res.status(204).json();
 }
-const avatarPath = path.resolve("public","avatar");
+const avatarPath = path.resolve("public","avatars");
 
 const updateAvatar = async(req,res)=>{
     const { path: oldPath,filename} = req.file;
