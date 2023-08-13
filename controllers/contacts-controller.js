@@ -20,7 +20,8 @@ const getById = async (req, res) => {
     res.json(result);
 }
 
-const add = async (req, res, next) => {
+
+const add = async (req, res) => {
     const {_id:owner} = req.user;
     const result = await Contact.create({...req.body,owner});
     res.status(201).json(result);
@@ -47,6 +48,8 @@ const updateFavorite = async(req,res) =>{
     res.json(result);
 }
 
+
+
 const deleteById = async (req, res, next) => {
     const { id } = req.params;
     const result = await Contact.findByIdAndRemove(id);
@@ -65,4 +68,5 @@ export default {
     updateById: ctrlWrapper(updateById),
     updateFavorite:ctrlWrapper(updateFavorite),
     deleteById: ctrlWrapper(deleteById),
+    
 }
