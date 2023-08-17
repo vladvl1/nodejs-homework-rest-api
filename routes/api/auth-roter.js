@@ -9,7 +9,6 @@ import {validateBody} from "../../decorators/index.js";
 import {authenticate,upload} from "../../middlewares/index.js";
 
 
-
 const authRouter = express.Router();
 
 authRouter.post("/register", validateBody(usersSchemas.userRegisterSchema), authController.register);
@@ -21,5 +20,10 @@ authRouter.get("/current", authenticate, authController.getCurrent);
 authRouter.post("/logout", authenticate, authController.logout);
 
 authRouter.patch("/avatars",authenticate,upload.single("avatar"),authController.updateAvatar);
+
+authRouter.get("/verify/:verificationToken", authController.verify);
+
+authRouter.post("/verify", validateBody(usersSchemas.userEmailSchema), authController.resendVerifyEmail)
+
 
 export default authRouter;
